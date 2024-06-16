@@ -32,3 +32,5 @@ Route::get('/routes', function () {
     });
     return response()->json($routes);
 });
+
+Route::get('reservas-por-fecha', [ReservaController::class, 'getReservasGroupedByFecha']);

@@ -1,0 +1,21 @@
+con estos comandos podemos ver quien hizo la reserva a que hora fecha duracion etc
+
+Reserva para Sala A el 2024-06-15
+
+URL: http://localhost:8081/reservas/public/api/reservas/Sala%20A/2024-06-15
+Reserva para Sala B el 2024-06-16
+
+URL: http://localhost:8081/reservas/public/api/reservas/Sala%20B/2024-06-16
+Reserva para Sala C el 2024-06-17
+
+URL: http://localhost:8081/reservas/public/api/reservas/Sala%20C/2024-06-17
+Reserva para Sala D el 2024-06-18
+
+URL: http://localhost:8081/reservas/public/api/reservas/Sala%20D/2024-06-18
+Reserva para Sala E el 2024-06-19
+
+URL: http://localhost:8081/reservas/public/api/reservas/Sala%20E/2024-06-19
+
+con estos comandos podemos ver los datos actualizar eliminar y crear obviamente para actualizar y eliminar hay que poner el id despues del nombre de la tabla
+
+http://localhost:8081/reservas/public/api/reservas

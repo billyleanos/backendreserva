@@ -110,5 +110,30 @@ class ReservaController extends Controller
 
         return $interval->format('%h horas %i minutos');
     }
+
+    // Método para listar todas las reservas agrupadas por fecha
+    public function getReservasGroupedByFecha()
+    {
+        // Obtener todas las reservas, incluidas las relaciones necesarias
+        $reservas = Reserva::with('usuario')->get();
+
+        // Agrupar las reservas por fecha
+        $grouped = $reservas->groupBy('fecha_reserva');
+
+        // Formatear la respuesta
+        $result = [];
+        foreach ($grouped as $fecha => $reservasPorFecha) {
+            $result[$fecha] = $reservasPorFecha->map(function($reserva) {
+                return [
+                    'title' => $reserva->evento,
+                    'description' => "Reserva realizada por " . $reserva->usuario->nombre_apellido . " desde " . $reserva->hora_inicio . " hasta " . $reserva->hora_fin,
+                    'hora_inicio' => $reserva->hora_inicio,
+                    'hora_fin' => $reserva->hora_fin
+                ];
+            });
+        }
+
+        return response()->json(['reservas' => $result]);
+    }
 }
 
