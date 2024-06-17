@@ -20,6 +20,7 @@ Route::apiResource('areas', AreaController::class);
 // Nueva ruta para obtener reservas por sala y fecha
 Route::get('reservas/{sala}/{fecha}', [ReservaController::class, 'getReservasBySalaFecha']);
 
+
 Route::get('/routes', function () {
     $routes = collect(\Illuminate\Support\Facades\Route::getRoutes())->map(function ($route) {
         return [
@@ -34,3 +35,13 @@ Route::get('/routes', function () {
 });
 
 Route::get('reservas-por-fecha', [ReservaController::class, 'getReservasGroupedByFecha']);
+
+use App\Http\Controllers\LoginController;
+
+Route::get('login', [LoginController::class, 'login']);
+
+
+
+
+
+
