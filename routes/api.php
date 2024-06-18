@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\SalaController;
 use App\Http\Controllers\ReservaController;
@@ -20,7 +18,6 @@ Route::apiResource('areas', AreaController::class);
 // Nueva ruta para obtener reservas por sala y fecha
 Route::get('reservas/{sala}/{fecha}', [ReservaController::class, 'getReservasBySalaFecha']);
 
-
 Route::get('/routes', function () {
     $routes = collect(\Illuminate\Support\Facades\Route::getRoutes())->map(function ($route) {
         return [
@@ -34,11 +31,12 @@ Route::get('/routes', function () {
     return response()->json($routes);
 });
 
-Route::get('reservas-por-fecha', [ReservaController::class, 'getReservasGroupedByFecha']);
+Route::post('reservas-por-fecha', [ReservaController::class, 'getReservasGroupedByFecha']);
 
-use App\Http\Controllers\LoginController;
+// Cambiar la ruta de login a POST
+Route::post('login', [LoginController::class, 'login']);
 
-Route::get('login', [LoginController::class, 'login']);
+
 
 
 
